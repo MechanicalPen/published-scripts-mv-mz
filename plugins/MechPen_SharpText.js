@@ -181,10 +181,10 @@ Bitmap.prototype.drawOldText = function(text, x, y, maxWidth, lineHeight, align)
     const context = this.context;
     const alpha = context.globalAlpha;
     maxWidth = maxWidth || 0xffffffff;
-    let tx = x;
+    let tx = Math.round(x);
     let ty = Math.round(y + lineHeight / 2 + this.fontSize * 0.35);
     if (align === "center") {
-        tx += maxWidth / 2;
+        tx += Math.round(maxWidth / 2);
 		var wobbly = this.measureTextWidth(text);
 		if ((wobbly % 2) == 1) { tx -= 0.5;}
     }
@@ -208,10 +208,10 @@ Bitmap.prototype.drawNewTextOutline = function(text, x, y, maxWidth, lineHeight,
     //   textBaseline == 'top'. So we use 'alphabetic' here.
     const context = this.context;
     maxWidth = maxWidth || 0xffffffff;
-    let tx = x;
+    let tx = Math.round(x);
     let ty = Math.round(y + lineHeight / 2 + this.fontSize * 0.35);
     if (align === "center") {
-        tx += maxWidth / 2;
+        tx += Math.round(maxWidth / 2);
 		var wobbly = this.measureTextWidth(text);
 		if ((wobbly % 2) == 1) { tx -= 0.5;}
     }
@@ -233,10 +233,10 @@ Bitmap.prototype.drawNewTextBody = function(text, x, y, maxWidth, lineHeight, al
     //   textBaseline == 'top'. So we use 'alphabetic' here.
     const context = this.context;
     maxWidth = maxWidth || 0xffffffff;
-    let tx = x;
+    let tx = Math.round(x);
     let ty = Math.round(y + lineHeight / 2 + this.fontSize * 0.35);
     if (align === "center") {
-        tx += maxWidth / 2;
+        tx += Math.round(maxWidth / 2);
 		var wobbly = this.measureTextWidth(text);
 		if ((wobbly % 2) == 1) { tx -= 0.5;}
     }
