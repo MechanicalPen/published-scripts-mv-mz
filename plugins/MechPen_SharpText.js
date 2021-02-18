@@ -3,7 +3,7 @@
 //=============================================================================
 /*:
 * @target MV MZ
-* @plugindesc v0.94 Text Sharpen plugin beta
+* @plugindesc v0.96 Text Sharpen plugin beta
 * @author MechPen
 *
 * @param outlineSharp
@@ -46,6 +46,8 @@
 *-----------------------------------------------------------------------------
 * The released versions of this plugin (Change log)
 *-----------------------------------------------------------------------------
+* version 0.96
+*  - Fix font being drawn at fractional pixel when centering text.
 * version 0.94
 *  - MV support, round pixels, outline AA option.
 * version 0.9
