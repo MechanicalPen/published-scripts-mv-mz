@@ -15,7 +15,8 @@ MechPen.FollowerSpace.version = 1.1;
 
 //=============================================================================
  /*:
- * @plugindesc v1.1 Lets party followers lag a set number of tiles behind. 
+ * @target MV MZ
+ * @plugindesc v1.2 Lets party followers lag a set number of tiles behind. 
  * Useful if your character sprites are large (or fat :P ).
  * @author MechPen
  *
@@ -30,6 +31,8 @@ MechPen.FollowerSpace.version = 1.1;
  * 
  * Also: You can't set Follower Distance less than 1. It would make no sense to stack
  * the followers like that!
+ * version 1.2
+ * - Now it works in MZ.
  * version 1.1
  * - Fixed bug with Gathering, if the player hadn't walked enough to fill out his last positions.
  * version 1.0
@@ -141,9 +144,24 @@ Game_Followers.prototype.jumpAll = function() {
 	$gamePlayer.clearLastPositions();
 };
 
+if (Utils.RPGMAKER_NAME == "MZ")
+{
+
+Game_Followers.prototype.synchronize = function(x, y, d) {
+    for (const follower of this._data) {
+        follower.locate(x, y);
+        follower.setDirection(d);
+    }
+};
+
+} else if (Utils.RPGMAKER_NAME == "MV")
+{
+	
 Game_Followers.prototype.synchronize = function(x, y, d) {
     this.forEach(function(follower) {
         follower.locate(x, y);
         follower.setDirection(d);
     }, this);
 };
+
+}
