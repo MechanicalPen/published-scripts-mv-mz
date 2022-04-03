@@ -111,8 +111,8 @@ Bitmap.prototype.drawText = function(text, x, y, maxWidth, lineHeight, align) {
 		var c = bitmap.outlineColor;
 		var rgb = c.match(/[.?\d]+/g);
 		var r = parseInt(rgb[0]);
-		var b = parseInt(rgb[1]);
-		var g = parseInt(rgb[2]);
+		var g = parseInt(rgb[1]);
+		var b = parseInt(rgb[2]);
 		var a = parseFloat(rgb[3])*255;
 	
 		bitmap.drawNewTextOutline(text, bitmap.outlineWidth, bitmap.outlineWidth, pmaxWidth, height, align);
