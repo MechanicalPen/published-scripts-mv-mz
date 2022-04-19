@@ -11,7 +11,7 @@ Imported.MechPen_FollowerSpace = true;
 
 var MechPen = MechPen || {};
 MechPen.FollowerSpace = MechPen.FollowerSpace || {};
-MechPen.FollowerSpace.version = 1.1;
+MechPen.FollowerSpace.version = 1.3;
 
 //=============================================================================
  /*:
@@ -25,12 +25,21 @@ MechPen.FollowerSpace.version = 1.1;
  * Default: 1
  * @default 1
  *
+ * @param Events move through followers
+ * @type boolean
+ * @desc If ON events will move through followers.
+ * Default: off
+ * @default false
+ *
  * @help
  * Be sure to put this plug-in above any other plug-in that
  * modifies Game_Follower.updateMove(); or else that plug-in might not work.
  * 
  * Also: You can't set Follower Distance less than 1. It would make no sense to stack
  * the followers like that!
+ * version 1.3
+ * - Added an option to let events walk through followers. In case they block your
+ *   cutscene by being too spaced.
  * version 1.2
  * - Now it works in MZ.
  * version 1.1
@@ -43,6 +52,7 @@ MechPen.FollowerSpace.version = 1.1;
 MechPen.Parameters = PluginManager.parameters('MechPen_FollowerSpace');
 MechPen.Param = MechPen.Param || {};
 MechPen.Param.FollowerSpaceDistance = Math.max((Number(MechPen.Parameters['Follower Distance']) || 1), 1);
+MechPen.Param.WalkThroughFollower = MechPen.Parameters['Events move through followers'] == true;
 
 //=============================================================================
 // Game_Player
@@ -92,6 +102,18 @@ Game_Player.prototype.moveDiagonally = function(horz, vert) {
 		var currentPosition = [this.x, this.y];
 		this._lastPositions.unshift(currentPosition);
 	}
+};
+
+if (MechPen.Param.WalkThroughFollower) {
+	Game_Player.prototype.isCollided = function(x, y) {
+    if (this.isThrough()) {
+        return false;
+    } else {
+        return this.pos(x, y);
+    }
+};
+}
+
 };
 
 //=============================================================================
