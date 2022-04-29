@@ -117,7 +117,7 @@ Bitmap.prototype.drawText = function(text, x, y, maxWidth, lineHeight, align) {
 	
 		bitmap.drawNewTextOutline(text, bitmap.outlineWidth, bitmap.outlineWidth, pmaxWidth, height, align);
 		if (SharpText_OutlineAA &&
-			(scaledMaxWidthWithOutline > 0 && scaledHeightWithOutline > 0) {
+			scaledMaxWidthWithOutline > 0 && scaledHeightWithOutline > 0) {
 			var imageData = bitmap.getUnbluredImageData(scaledMaxWidthWithOutline, scaledHeightWithOutline, r, g, b, a);
 			bitmap._context.putImageData(imageData, 0, 0);
 		}
