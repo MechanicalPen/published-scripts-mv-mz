@@ -75,6 +75,7 @@ Bitmap.drawSmallTextBitmap = new Bitmap(1024, 64);
  * @param {String} align The alignment of the text
  */
 Bitmap.prototype.drawText = function(text, x, y, maxWidth, lineHeight, align) {
+	if (!text || text == "") { return;} // if no text, nothing to do.
 	// sharp text must be drawn on pixel borders.
 	var px = Math.round(x);
 	var py = Math.round(y);
