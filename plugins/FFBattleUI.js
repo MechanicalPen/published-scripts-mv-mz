@@ -93,7 +93,7 @@ Window_BattleStatus.prototype.nameY = function(rect) {
 
 Window_BattleStatus.prototype.basicGaugesX = function(rect) {
 	const numGauges = 3;
-    const aftername = rect.x + rect.width - this.gaugeLineWidth() *(numGauges) - this.extraHeight()*(3);
+    const aftername = rect.x + rect.width - this.gaugeLineWidth() *(numGauges);
     return aftername;
 };
 
@@ -102,7 +102,7 @@ Window_BattleStatus.prototype.basicGaugesY = function(rect) {
 };
 
 Window_BattleStatus.prototype.gaugeLineWidth = function(rect) {
-    return 108;//(this.innerWidth -  this.extraHeight())/4;
+    return GAUGE_WIDTH + 4 + 4;
 };
 
 Window_BattleStatus.prototype.stateIconX = function(rect) {
